@@ -36,8 +36,7 @@ LOCAL_SRC_FILES += \
     mtdutils/mtdutils.c \
     twinstall.cpp \
     twrp-functions.cpp \
-    openrecoveryscript.cpp \
-    tarWrite.c
+    openrecoveryscript.cpp
 
 ifneq ($(TARGET_RECOVERY_REBOOT_SRC),)
   LOCAL_SRC_FILES += $(TARGET_RECOVERY_REBOOT_SRC)
@@ -140,6 +139,9 @@ ifneq ($(TW_EXTERNAL_STORAGE_MOUNT_POINT),)
 endif
 ifeq ($(TW_HAS_NO_RECOVERY_PARTITION), true)
     LOCAL_CFLAGS += -DTW_HAS_NO_RECOVERY_PARTITION
+endif
+ifeq ($(TW_HAS_NO_BOOT_PARTITION), true)
+    LOCAL_CFLAGS += -DTW_HAS_NO_BOOT_PARTITION
 endif
 ifeq ($(TW_NO_REBOOT_BOOTLOADER), true)
     LOCAL_CFLAGS += -DTW_NO_REBOOT_BOOTLOADER
